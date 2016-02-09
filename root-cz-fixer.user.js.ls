@@ -60,6 +60,9 @@ config =
     removeTrainings:
       enabled: true
 
+    moveActualities:
+      enabled: true
+
     scrollAfterMenuBar:
       enabled: true
       options: {delayInMs: 50, animate: 1000}
@@ -114,6 +117,7 @@ enableCssTag = (cls) !-> $ \html .addClass "rcf-tag-#cls"
 reduceFontSizes = !-> enableCssTag 'fonts'
 recolor = !-> enableCssTag 'color'
 removeIinfoBar = !-> enableCssTag \iinfobar
+moveActualities = !-> enableCssTag \actualities
 
 executeRunners = !~>
   prioritySort = (x, y) -> (x.1.priority ? 0) - (y.1.priority ? 0)
@@ -129,7 +133,7 @@ checkSanity = !->
   if !require? then crash '"require" not found (prelude-ls)'
 
 checkSanity!
-{each, sort-with, reverse} = require 'prelude-ls'
+{each, obj-to-pairs, sort-with, reverse} = require 'prelude-ls'
 
 <~! $
 applyCss!

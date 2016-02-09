@@ -273,5 +273,22 @@ tile-padding()
 
 /* Actualities to right */
 .rcf-tag-actualities
+    body > .container-fluid
+        display flex
+
     .page.page--index
-        mragain-left 0
+        margin-left 0
+        padding-left 0px
+        margin-right 355px // TODO: smaller on medium screens
+
+    #sidebar
+        left unset;
+        right -360px
+        
+    .main.main--index
+        //margin-left 0px
+        background none
+        //padding-right 300px
+            
+    .ad-skyscraper-sticky-holder
+        display none
