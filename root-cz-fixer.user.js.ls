@@ -30,21 +30,40 @@ var e,u,i,o,a,c,f,l,s,p={}.toString;e=n("./Func.js");u=n("./List.js");i=n("./Obj
 ``
 console.info '* root-cz-fixer by monnef *'
 
+
 /* User configuration part */
 
 config =
-  # TODO: rewrite to obj (priority key), e.g. { someRunner: { enabled: true, priority: 100} }
-  runners: [
-    [\fixTiles, true],
-    [\reduceFontSizes, true],
-    [\recolor, true],
-    [\removeIinfoBar, true],
-    [\removePromo, true],
-    [\removeFooter, true],
-    [\removeJobs, true],
-    [\removeTrainings, true],
-    [\scrollAfterMenuBar, true, {delayInMs: 50, animate: 1000}],
-  ]
+  runners:
+    fixTiles:
+      enabled: true
+
+    reduceFontSizes:
+      enabled: true
+
+    recolor:
+      enabled: true
+
+    removeIinfoBar:
+      enabled: true
+      priority: 100
+
+    removePromo:
+      enabled: true
+
+    removeFooter:
+      enabled: true
+
+    removeJobs:
+      enabled: true
+
+    removeTrainings:
+      enabled: true
+
+    scrollAfterMenuBar:
+      enabled: true
+      options: {delayInMs: 50, animate: 1000}
+      priority: -100
 
 
 # END of User configuration part
@@ -97,7 +116,9 @@ recolor = !-> enableCssTag 'color'
 removeIinfoBar = !-> enableCssTag \iinfobar
 
 executeRunners = !~>
-  config.runners |> each (x) !~> @[x[0]](x[2]) if x[1]
+  prioritySort = (x, y) -> (x.1.priority ? 0) - (y.1.priority ? 0)
+  execute =  ([name, obj]) !~> @[name](obj.options) if obj.enabled
+  config.runners |> obj-to-pairs |> sort-with prioritySort |> reverse |> each execute
 
 crash = (msg) !->
   console.error msg
@@ -108,11 +129,11 @@ checkSanity = !->
   if !require? then crash '"require" not found (prelude-ls)'
 
 checkSanity!
-
-{each, obj-to-pairs} = require 'prelude-ls'
+{each, sort-with, reverse} = require 'prelude-ls'
 
 <~! $
 applyCss!
 invadeMenu!
 executeRunners!
 console.log 'Done!'
+
