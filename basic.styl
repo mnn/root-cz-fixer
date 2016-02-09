@@ -1,0 +1,272 @@
+mainBgColor = #050005
+tileBgColor = lighten(#100005, 2)
+
+commentsColor = #aaa
+
+richTextColor = #E9E6F8
+textColor = #F9F7E0
+textColorDark = desaturate(darken(textColor, 33), 70%)
+
+// debug
+//textColor = lime
+
+/* Fonts */
+
+.rcf-tag-fonts
+    font-size 16px
+    
+    .article__heading--content
+        font-size 110%
+
+    .discussion__topics
+        font-size 110%
+
+/* Background */
+
+.rcf-tag-color
+    .main, .page-block
+        border-color mainBgColor
+
+
+    body,
+    .row,
+    .page
+        background-color mainBgColor
+
+    .author__info .row
+        background-color transparent
+
+
+    .sidebar, .tile, .main, .tips, .promo__inner, .content__more 
+    .content--bg, .content--breadcrumb, .content--detail, .content--promo
+    .detail__perex .perex
+    .section--detail-bottom
+    .serial__pagination
+    .serial__pagination a
+    .opener
+        background-color tileBgColor
+
+.detail__perex .perex
+    margin 0
+    padding 1em
+
+.rcf-tag-color
+    .section::before 
+        border-color mainBgColor
+
+    .article:not(:first-child) .article__heading--sidebar
+    .content__more
+        border-color lighten(tileBgColor, 5)
+
+    .content__more.active, .content__more:active, .content__more:hover, .open > .dropdown-toggle.content__more
+    .classification > a
+    .discussion__new
+        background-color lighten(tileBgColor, 3)
+        border-color lighten(tileBgColor, 5)
+        color textColor
+        &:hover
+            background-color lighten(tileBgColor, 5)
+            border-color lighten(tileBgColor, 7)
+
+    .article--sidebar:hover
+    .discussion__topic:hover
+        background-color lighten(tileBgColor, 3)
+   
+/* Color */
+
+.rcf-tag-color
+    .tips__heading
+    .section__heading:not(.section__heading--serial)
+    a
+    .nav__link, .nav__link:visited
+    .discussion__tabs .nav__link
+    .discussion__link
+        color richTextColor
+
+    .link-block:visited .article__heading
+        color darken(textColor, 5)
+
+    .section__header a:visited
+    a:visited
+        color darken(richTextColor, 10)
+        
+    .comments__count--total
+        color commentsColor
+
+    .discussion__link svg
+        fill commentsColor
+        
+    .comments__count--new
+        color lighten(commentsColor, 10)
+
+.rcf-tag-color
+    body
+    .article__perex
+    .perex
+    .article__text
+    .tip__link
+    .opener__body
+        color textColor
+
+    .impressum--article .impressum__author
+    .impressum
+    .impressum__date
+    .author__name a
+        color textColorDark
+        
+    .impressum__date svg
+        fill textColorDark
+
+.rcf-tag-color
+    .tips
+        position relative
+
+    .tips::before // hide tips arrow (background svg, no easy way to recolor)
+        background none
+        content '>'
+        font-size 150px
+        position absolute
+        left 80px
+        display inline-block
+        top -70px
+        opacity 0.3
+    
+/* Tiles */
+
+.rcf-tag-color
+    .tile
+        box-shadow unset
+        &:hover, &:active
+            box-shadow 0px 0px 1px 1px alpha(lighten(tileBgColor, 20), 0.5)
+
+.article
+    margin-top 5px
+
+.article--actuality, .article--content, .article--related, .article--search-result, .article--training
+    //padding 0px 4px
+
+.article.article--content
+    min-height 163px
+
+@media (max-width: 1070px)
+    .not-page-block--trainings
+        .article__body
+            position relative
+
+        .article__text
+            padding 7px 
+            text-shadow #000 0px 0px 3px, #000 0px 0px 2px, #000 0px 0px 2px, #000 0px 0px 1px
+
+        .article__img
+            position absolute
+            top 0
+            opacity 0.5
+
+        .rcf-tile-stretcher
+            visibility hidden
+             
+        .rcf-tile-shower
+            display inline-block
+            position absolute
+            top 0
+
+        .article__body:hover
+            .article__img
+                opacity 1
+            .article__text
+                opacity 0.25
+
+.rcf-tile-stretcher
+    visibility visible
+     
+.rcf-tile-shower
+    display none
+
+tile-padding()
+    padding 10px 15px
+
+
+.opener // master tile
+    display flex
+
+    / .rcf-tag-fonts &
+        .opener__heading
+            font-size 120%
+            
+        &, .perex
+            font-size unset
+
+    .opener__link-img 
+        height 160px
+        max-width 286px
+        .opener__img
+            height auto
+            
+    .opener__body
+        tile-padding()
+        max-width unset
+
+    .opener__header:hover
+        .opener__heading
+            text-decoration underline
+
+.article__text
+    tile-padding()
+
+.rcf-tag-color .impressum__rubric
+        color unset
+
+/* Promo - bottom white promotion box */
+
+.rcf-tag-color .promo
+    opacity 0.2
+    .promo__inner
+        background white
+
+/* Article */
+
+.detail__article::before
+    border-top 0
+
+/* Forum */
+
+.section__body
+    padding 10px 4px
+
+.content__more
+    margin 10px 0 5px 0
+
+.section--discussion .section__header
+.section__header
+    margin-bottom 0
+
+#newTopic
+    margin-top -5px
+    margin-right 1px
+
+/* Actualities */
+.page-block--actualities .section__header
+    margin-bottom 0
+
+.article--sidebar
+    margin-top 0
+
+/* Navbar */
+.navbar
+    transition unset
+    padding-left 5px
+    min-height 0
+
+    .nav-top--aside, .nav-top--main
+        height 30px
+
+/* IInfo bar */
+.rcf-tag-iinfobar
+    #sefa.iinfoBar
+        display none
+    .navbar
+        top 0
+    body
+        padding-top 30px
+    .main
+        border-top-width 10px
