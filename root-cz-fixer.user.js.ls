@@ -65,8 +65,11 @@ config =
 
     scrollAfterMenuBar:
       enabled: true
-      options: {delayInMs: 50, animate: 1000}
+      options: {delayInMs: 50, animate: 200}
       priority: -100
+
+    moveForumUp:
+      enabled: true
 
 
 # END of User configuration part
@@ -118,6 +121,8 @@ reduceFontSizes = !-> enableCssTag 'fonts'
 recolor = !-> enableCssTag 'color'
 removeIinfoBar = !-> enableCssTag \iinfobar
 moveActualities = !-> enableCssTag \actualities
+
+moveForumUp = !-> $ \.page-block--forum .css(\margin-bottom, \0). css(\margin-top, \7px) .insertAfter($ \#sidebar)
 
 executeRunners = !~>
   prioritySort = (x, y) -> (x.1.priority ? 0) - (y.1.priority ? 0)
