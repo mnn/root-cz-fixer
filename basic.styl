@@ -130,6 +130,16 @@ textColorDark = desaturate(darken(textColor, 33), 70%)
         display inline-block
         top -70px
         opacity 0.3
+
+/* Comments (text) */
+
+.rcf-tag-color
+    .opinion-view
+        background-color darken(tileBgColor, 1)
+        border-color lighten(tileBgColor, 7)
+        
+    .opinion-text h3.title a
+        color richTextColor
     
 /* Tiles */
 
@@ -276,7 +286,7 @@ tile-padding()
     body > .container-fluid
         display flex
 
-    .page.page--index
+    .page
         margin-left 0
         padding-left 0px
         margin-right 355px // TODO: smaller on medium screens
