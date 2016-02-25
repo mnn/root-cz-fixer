@@ -1,3 +1,5 @@
 /root-cz-fixer.user.js
 /basic.css
 /jquery.min.js
+/node_modules/*
+/root-cz-fixer.user.js.js

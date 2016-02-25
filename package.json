@@ -1,0 +1,14 @@
+{
+  "name": "root-cz-fixer-1",
+  "version": "0.0.1",
+  "description": "",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-livescript": "^3.0.0",
+    "gulp-util": "^3.0.7",
+    "livescript": "^1.4.0"
+  },
+  "dependencies": {},
+  "author": "monnef"
+}
