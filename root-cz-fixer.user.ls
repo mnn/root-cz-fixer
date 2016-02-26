@@ -133,7 +133,7 @@ crash = (msg) !->
   console.error msg
   throw new Error msg
 
-checkSanity = !->
+checkSanity = !~>
   if !$? then crash '"$" not found'
   if !require? then crash '"require" not found (prelude-ls)'
 

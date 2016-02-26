@@ -4,10 +4,17 @@
   "description": "",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-load-plugins": "^1.2.0",
+    "gulp-if": "^2.0.0",
     "gulp-livescript": "^3.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-sequence": "^0.4.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylus": "^2.3.0",
+    "gulp-task-listing": "^1.0.1",
+    "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "livescript": "^1.4.0"
+    "livescript": "^1.4.0",
+    "prelude-ls": "^1.1.2"
   },
   "dependencies": {},
   "author": "monnef"
