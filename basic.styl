@@ -6,9 +6,26 @@ commentsColor = #aaa
 richTextColor = #E9E6F8
 textColor = #F9F7E0
 textColorDark = desaturate(darken(textColor, 33), 70%)
+blandTextColor = desaturate(darken(textColorDark, 15), 15)
+
+richBgColor = lighten(tileBgColor, 3)
+richBorderColor = lighten(tileBgColor, 5)
+buttonBgColorHover = lighten(tileBgColor, 5)
+buttonBorderColorHover = lighten(tileBgColor, 7)
 
 // debug
 //textColor = lime
+
+rich-element-recolor()
+    background-color richBgColor
+    border-color richBorderColor
+    color textColor
+
+button-recolor()
+    rich-element-recolor()
+    &:hover
+        background-color buttonBgColorHover
+        border-color buttonBorderColorHover
 
 /* Fonts */
 
@@ -49,7 +66,7 @@ textColorDark = desaturate(darken(textColor, 33), 70%)
 .detail__perex .perex
     margin 0
     padding 1em
-
+          
 .rcf-tag-color
     .section::before 
         border-color mainBgColor
@@ -61,12 +78,7 @@ textColorDark = desaturate(darken(textColor, 33), 70%)
     .content__more.active, .content__more:active, .content__more:hover, .open > .dropdown-toggle.content__more
     .classification > a
     .discussion__new
-        background-color lighten(tileBgColor, 3)
-        border-color lighten(tileBgColor, 5)
-        color textColor
-        &:hover
-            background-color lighten(tileBgColor, 5)
-            border-color lighten(tileBgColor, 7)
+        button-recolor()
 
     .article--sidebar:hover
     .discussion__topic:hover
@@ -235,40 +247,43 @@ tile-padding()
 
 /* Article */
 
-.detail__article::before
-    border-top 0
+.rcf-tag-color
+    .detail__article::before
+        border-top 0
 
-/* Forum */
+/* Forum (main page) */
+.rcf-tag-color
+    .section__body
+        padding 10px 4px
 
-.section__body
-    padding 10px 4px
+    .content__more
+        margin 10px 0 5px 0
 
-.content__more
-    margin 10px 0 5px 0
+    .section--discussion .section__header
+    .section__header
+        margin-bottom 0
 
-.section--discussion .section__header
-.section__header
-    margin-bottom 0
-
-#newTopic
-    margin-top -5px
-    margin-right 1px
+    #newTopic
+        margin-top -5px
+        margin-right 1px
 
 /* Actualities */
-.page-block--actualities .section__header
-    margin-bottom 0
+.rcf-tag-color
+    .page-block--actualities .section__header
+        margin-bottom 0
 
-.article--sidebar
-    margin-top 0
+    .article--sidebar
+        margin-top 0
 
 /* Navbar */
-.navbar
-    transition unset
-    padding-left 5px
-    min-height 0
+.rcf-tag-color
+    .navbar
+        transition unset
+        padding-left 5px
+        min-height 0
 
-    .nav-top--aside, .nav-top--main
-        height 30px
+        .nav-top--aside, .nav-top--main
+            height 30px
 
 /* IInfo bar */
 .rcf-tag-iinfobar
@@ -302,3 +317,84 @@ tile-padding()
             
     .ad-skyscraper-sticky-holder
         display none
+
+/* Forum */
+
+.rcf-tag-forum-ads
+    .body_message--ad
+        position absolute
+        left -1*10**3px
+
+.rcf-tag-color        
+    .poster ul li
+    .body_content
+        background-color tileBgColor
+        
+    .btn-group .dropdown-menu > li .button_strip_reply
+    .btn-group .dropdown-menu > li .button_strip_new_topic
+        button-recolor()
+
+    .poster h4
+    .poster ul ul
+        rich-element-recolor()
+
+    blockquote.bbc_standard_quote
+    blockquote.bbc_alternate_quote        
+    code.bbc_code
+        color textColor
+        background-color richBgColor
+        font-size 95%
+        
+    blockquote.bbc_alternate_quote
+        background-color lighten(richBgColor, 5)
+
+    .body_content
+        .reportlinks a
+            color blandTextColor
+        .arrow-left
+            border-right-color tileBgColor
+
+    .breadcrumb
+    #display_jump_to
+        background-color tileBgColor
+
+    .contentboard
+    .contentboard tr
+        background-color tileBgColor
+        td
+            color textColor
+        .table_list
+            td.icon
+            td.info
+            td.stats
+            td.lastpost
+                border 0
+        .table_list tbody.content td.info a.subject
+            color richTextColor
+        h4.titlebg, h3.titlebg
+            background-color richBgColor
+
+    div.cat_bar
+    h4.catbg, h4.catbg2, h3.catbg, h3.catbg2, .table_list tbody.header td.catbg
+        background-color richBgColor
+
+    #quickreplybox
+        #quickReplyOptions
+            .upperframe, .roundframe, .lowerframe
+                background-color tileBgColor
+                span
+                    background-color tileBgColor
+
+        .btn-primary
+            button-recolor()
+            
+        textarea
+            background-color richBgColor
+            color richTextColor
+            border-color richBorderColor
+            &:focus, &:active
+                border-color buttonBorderColorHover
+                
+    .navigate_section
+    .navbar
+        background none

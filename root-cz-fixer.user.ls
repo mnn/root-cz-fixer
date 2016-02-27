@@ -1,7 +1,7 @@
 ``// ==UserScript==
 // @name        root-cz-fixer
 // @namespace   monnef.tk
-// @include     http://www.root.cz/*
+// @include     http://*.root.cz/*
 // @version     %%VERSION%%
 // @grant       GM_addStyle
 // @grant       GM_getResourceText
@@ -71,6 +71,9 @@ config =
     moveForumUp:
       enabled: true
 
+    removeForumAds:
+      enabled: true
+
 
 # END of User configuration part
 
@@ -117,10 +120,11 @@ removeFooter = !-> $ \.footer .hide!
 
 enableCssTag = (cls) !-> $ \html .addClass "rcf-tag-#cls"
 
-reduceFontSizes = !-> enableCssTag 'fonts'
-recolor = !-> enableCssTag 'color'
+reduceFontSizes = !-> enableCssTag \fonts
+recolor = !-> enableCssTag \color
 removeIinfoBar = !-> enableCssTag \iinfobar
 moveActualities = !-> enableCssTag \actualities
+removeForumAds = !-> enableCssTag \forum-ads
 
 moveForumUp = !-> $ \.page-block--forum .css(\margin-bottom, \0). css(\margin-top, \7px) .insertAfter($ \#sidebar)
 
