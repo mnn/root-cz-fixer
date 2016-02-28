@@ -137,7 +137,7 @@ fixPageLinks = !->
   enableCssTag \page-links
   removeTextNodes $ \.pagelinks
   $ \.nextlinks .appendTo($ \.display-info)
-  $ \.nextlinks_bottom .prependTo ($ \.pagesection)
+  $ \.nextlinks_bottom .prependTo ($ \.pagesection .1)
   $ '.display-info ul' .prependTo ($ \.display-info)
 
 removeTextNodes = (jqElem) !->
