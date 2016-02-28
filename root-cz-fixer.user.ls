@@ -74,6 +74,12 @@ config =
     removeForumAds:
       enabled: true
 
+    fixPageLinks:
+      enabled: true
+
+    removeForumFooter:
+      enabled: true
+
 
 # END of User configuration part
 
@@ -125,6 +131,17 @@ recolor = !-> enableCssTag \color
 removeIinfoBar = !-> enableCssTag \iinfobar
 moveActualities = !-> enableCssTag \actualities
 removeForumAds = !-> enableCssTag \forum-ads
+removeForumFooter = !-> enableCssTag \forum-footer
+
+fixPageLinks = !->
+  enableCssTag \page-links
+  removeTextNodes $ \.pagelinks
+  $ \.nextlinks .appendTo($ \.display-info)
+  $ \.nextlinks_bottom .prependTo ($ \.pagesection)
+  $ '.display-info ul' .prependTo ($ \.display-info)
+
+removeTextNodes = (jqElem) !->
+  jqElem.contents!.filter(-> @nodeType === 3).remove!
 
 moveForumUp = !-> $ \.page-block--forum .css(\margin-bottom, \0). css(\margin-top, \7px) .insertAfter($ \#sidebar)
 

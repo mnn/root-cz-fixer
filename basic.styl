@@ -118,6 +118,7 @@ button-recolor()
     .article__text
     .tip__link
     .opener__body
+    h1, h2, h3, h4, h5, h6
         color textColor
 
     .impressum--article .impressum__author
@@ -281,6 +282,7 @@ tile-padding()
         transition unset
         padding-left 5px
         min-height 0
+        box-shadow none
 
         .nav-top--aside, .nav-top--main
             height 30px
@@ -325,8 +327,8 @@ tile-padding()
         position absolute
         left -1*10**3px
 
-.rcf-tag-color        
-    .poster ul li
+.rcf-tag-color
+    .poster > ul > li
     .body_content
         background-color tileBgColor
         
@@ -338,6 +340,30 @@ tile-padding()
     .poster ul ul
         rich-element-recolor()
 
+    tileSpace = 0.25em
+
+    .poster
+        margin-bottom tileSpace
+        h4
+            font-size 120%
+        li.avatar
+            padding 1em 0 0.1em 0
+        & > ul > li:last-child:not(.profile)
+            padding-bottom 1em
+
+    lineSeparatorBorder = 2px solid richBgColor
+    .post
+        .inner
+            border-top lineSeparatorBorder
+            padding 0.1em
+    .signature
+        border-top lineSeparatorBorder
+
+    
+    .body_message
+        padding tileSpace 0
+        
+.rcf-tag-color
     blockquote.bbc_standard_quote
     blockquote.bbc_alternate_quote        
     code.bbc_code
@@ -348,11 +374,17 @@ tile-padding()
     blockquote.bbc_alternate_quote
         background-color lighten(richBgColor, 5)
 
+    hidingOpacity = 0.2
     .body_content
+        padding 1em 2em
+        border-top 2px solid lighten(tileBgColor, 3)
+        border-bottom 2px solid lighten(tileBgColor, 10)
         .reportlinks a
-            color blandTextColor
+            opacity hidingOpacity
         .arrow-left
             border-right-color tileBgColor
+        .keyinfo
+            opacity hidingOpacity
 
     .breadcrumb
     #display_jump_to
@@ -374,6 +406,7 @@ tile-padding()
         h4.titlebg, h3.titlebg
             background-color richBgColor
 
+.rcf-tag-color
     div.cat_bar
     h4.catbg, h4.catbg2, h3.catbg, h3.catbg2, .table_list tbody.header td.catbg
         background-color richBgColor
@@ -398,3 +431,66 @@ tile-padding()
     .navigate_section
     .navbar
         background none
+    
+    .pagesection
+        margin-bottom 0.1em
+        .btn-group
+            margin 0
+    
+    .display-info
+        display flex
+        justify-content space-between
+        margin 0.5em 0
+        h1
+            text-align left
+        
+.rcf-tag-page-links
+    .pagelinks
+        margin-top 0
+        padding-top: 0.35em
+        .navPages
+            width 2.5em
+            height 2.5em
+            border-width 1px
+            border-style solid
+            button-recolor()
+            display inline-flex
+            justify-content center
+            align-items center
+        .navPages + strong
+            width 2em
+            height 2em
+            display inline-flex
+            justify-content center
+            align-items center
+        roundness = 0.5em
+        .navPages:first-child
+            border-radius: roundness 0 0 roundness
+        .navPages:last-child
+            border-radius: 0 roundness roundness 0
+            
+    .nextlinks
+    .nextlinks_bottom
+        display flex
+
+        a
+            button-recolor()
+            padding 0.5em 1em
+            border-width 1px
+            border-style solid
+            &:first-child
+                margin 0 0.5em 0 0
+    
+    .nextlinks_bottom
+        padding 0 0 1em 0
+        justify-content center
+    .nextlinks
+        padding-bottom 0
+
+.rcf-tag-forum-footer
+    footer
+    .container--footer
+        display none
+        
+    body
+        padding-bottom 1em
