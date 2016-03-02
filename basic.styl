@@ -13,8 +13,10 @@ richBorderColor = lighten(tileBgColor, 5)
 buttonBgColorHover = lighten(tileBgColor, 5)
 buttonBorderColorHover = lighten(tileBgColor, 7)
 
-// debug
-//textColor = lime
+//xlarge
+large = '(max-width: 1069px)'
+medium = '(max-width: 972px)'
+small =  '(max-width: 777px)'
 
 rich-element-recolor()
     background-color richBgColor
@@ -171,7 +173,10 @@ button-recolor()
 .article.article--content
     min-height 163px
 
-@media (max-width: 1070px)
+
+// TODO: tag sensitive
+// large size
+@media large
     .not-page-block--trainings
         .article__body
             position relative
@@ -306,11 +311,16 @@ tile-padding()
     .page
         margin-left 0
         padding-left 0px
-        margin-right 355px // TODO: smaller on medium screens
+        margin-right 355px
+        @media large
+            margin-right: 305px
 
     #sidebar
         left unset;
         right -360px
+        @media large
+            right -310px
+            max-width 300px
         
     .main.main--index
         //margin-left 0px
