@@ -25,7 +25,7 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
 
 ## TODO
 
-* -mascot-
+* ~~mascot~~
 * write build description in readme
 * better installation process - inline css into compile JS file?
 * concatenating comments into article page
