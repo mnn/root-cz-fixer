@@ -127,11 +127,17 @@ removeFooter = !-> $ \.footer .hide!
 enableCssTag = (cls) !-> $ \html .addClass "rcf-tag-#cls"
 
 reduceFontSizes = !-> enableCssTag \fonts
-recolor = !-> enableCssTag \color
 removeIinfoBar = !-> enableCssTag \iinfobar
 moveActualities = !-> enableCssTag \actualities
 removeForumAds = !-> enableCssTag \forum-ads
 removeForumFooter = !-> enableCssTag \forum-footer
+
+recolor = !->
+  enableCssTag \color
+  $ '#bbcBox_message > div > img'
+    .attr(\style, '')
+    .parent() .find '[alt="|"]'
+    .addClass \rcf-bbcbox-divider
 
 fixPageLinks = !->
   enableCssTag \page-links

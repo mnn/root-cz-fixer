@@ -8,10 +8,16 @@ textColor = #F9F7E0
 textColorDark = desaturate(darken(textColor, 33), 70%)
 blandTextColor = desaturate(darken(textColorDark, 15), 15)
 
+darkTileBgColor = desaturate(darken(tileBgColor, 1), 40)
+
 richBgColor = lighten(tileBgColor, 3)
 richBorderColor = lighten(tileBgColor, 5)
-buttonBgColorHover = lighten(tileBgColor, 5)
-buttonBorderColorHover = lighten(tileBgColor, 7)
+richBgColorHover = lighten(tileBgColor, 5)
+richBorderColorHover = lighten(tileBgColor, 7)
+lightRichBgColor = lighten(tileBgColor, 10)
+veryLightRichBgColor = desaturate(lighten(tileBgColor, 60), 80)
+veryLightRichBgColorHover = lighten(veryLightRichBgColor, 5)
+
 
 //xlarge
 large = '(max-width: 1069px)'
@@ -26,8 +32,13 @@ rich-element-recolor()
 button-recolor()
     rich-element-recolor()
     &:hover
-        background-color buttonBgColorHover
-        border-color buttonBorderColorHover
+        background-color richBgColorHover
+        border-color richBorderColorHover
+
+inline-flex-center()
+    display inline-flex
+    justify-content center
+    align-items center
 
 /* Fonts */
 
@@ -365,15 +376,15 @@ tile-padding()
     .post
         .inner
             border-top lineSeparatorBorder
-            padding 0.1em
+            padding 0.5em 0 0 0
     .signature
         border-top lineSeparatorBorder
 
     
+.rcf-tag-color
     .body_message
         padding tileSpace 0
         
-.rcf-tag-color
     blockquote.bbc_standard_quote
     blockquote.bbc_alternate_quote        
     code.bbc_code
@@ -400,6 +411,7 @@ tile-padding()
     #display_jump_to
         background-color tileBgColor
 
+.rcf-tag-color
     .contentboard
     .contentboard tr
         background-color tileBgColor
@@ -421,23 +433,38 @@ tile-padding()
     h4.catbg, h4.catbg2, h3.catbg, h3.catbg2, .table_list tbody.header td.catbg
         background-color richBgColor
 
-    #quickreplybox
-        #quickReplyOptions
-            .upperframe, .roundframe, .lowerframe
-                background-color tileBgColor
-                span
-                    background-color tileBgColor
+    .upperframe, .roundframe, .lowerframe
+        &, span
+            background-color tileBgColor
 
-        .btn-primary
-            button-recolor()
-            
-        textarea
-            background-color richBgColor
-            color richTextColor
-            border-color richBorderColor
-            &:focus, &:active
-                border-color buttonBorderColorHover
+    .btn-primary
+        button-recolor()
+        
+    textarea
+    input
+    select
+        background-color richBgColor
+        color richTextColor
+        border-color richBorderColorHover
+        &:focus, &:active
+            border-color lightRichBgColor
+
+    .richedit_resize
+        border 0
+        background-color richBgColor
                 
+    #bbcBox_message
+        & > div img:not(.rcf-bbcbox-divider)
+            box-sizing content-box
+            border-radius 4px
+            cursor pointer
+            background veryLightRichBgColor !important
+            border 1px solid darken(veryLightRichBgColor, 5)
+            &:hover, &:active, &:focus
+                background-color veryLightRichBgColorHover !important
+        .rcf-bbcbox-divider
+            border 0
+
     .navigate_section
     .navbar
         background none
@@ -447,32 +474,74 @@ tile-padding()
         .btn-group
             margin 0
     
+.rcf-tag-color
     .display-info
         display flex
         justify-content space-between
         margin 0.5em 0
         h1
             text-align left
-        
+
+    // list view
+
+    .windowbg, #preview_body, .windowbg2, .windowbg3, .windowbg4
+        background-color tileBgColor
+        color textColor
+        span
+            &.topslice, &.botslice
+                &, span
+                    background-color tileBgColor
+
+    .table-striped > tbody > tr:nth-child(2n+1)
+        & > td, & > th
+            background-color lighten(tileBgColor, 1)
+
+    .table
+        & > tbody, & > tfoot, & > thead
+            & > tr
+                & > td, & > th
+                    border-top-color richBgColorHover
+
+    tr.catbg th.first_th
+        background-color richBgColor
+
+.rcf-tag-color
+    .titlebg, .titlebg2, .catbg, .catbg2
+        &
+            background-color richBgColor
+        ^[-1] tr^[-1..1]
+            th, td
+                background-color richBgColor
+
+    .table > thead > tr > th
+        border-bottom 0
+
+    .label-warning
+        background-color lightRichBgColor
+
+    #messageindex
+        background-color darkTileBgColor
+        & > table
+            border 1px solid richBgColorHover
+
+    .description, .description_board, .plainbox
+        background-color tileBgColor        
+
 .rcf-tag-page-links
     .pagelinks
         margin-top 0
         padding-top: 0.35em
-        .navPages
-            width 2.5em
-            height 2.5em
+        .navPages, strong
+            inline-flex-center()
             border-width 1px
             border-style solid
+            width 2.5em
+            height 2.5em
+        .navPages
             button-recolor()
-            display inline-flex
-            justify-content center
-            align-items center
-        .navPages + strong
-            width 2em
-            height 2em
-            display inline-flex
-            justify-content center
-            align-items center
+        strong
+            rich-element-recolor()
+            background-color richBgColorHover
         roundness = 0.5em
         .navPages:first-child
             border-radius: roundness 0 0 roundness
