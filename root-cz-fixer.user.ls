@@ -80,6 +80,12 @@ config =
     removeForumFooter:
       enabled: true
 
+    removeSklikAd:
+      enabled: true
+
+    removeFloatingArticleInfo: # "social bar"
+      enabled: true
+
 
 # END of User configuration part
 
@@ -131,6 +137,7 @@ removeIinfoBar = !-> enableCssTag \iinfobar
 moveActualities = !-> enableCssTag \actualities
 removeForumAds = !-> enableCssTag \forum-ads
 removeForumFooter = !-> enableCssTag \forum-footer
+removeFloatingArticleInfo = !-> enableCssTag \floating-article-info
 
 recolor = !->
   enableCssTag \color
@@ -150,6 +157,10 @@ removeTextNodes = (jqElem) !->
   jqElem.contents!.filter(-> @nodeType === 3).remove!
 
 moveForumUp = !-> $ \.page-block--forum .css(\margin-bottom, \0). css(\margin-top, \7px) .insertAfter($ \#sidebar)
+
+removeSklikAd = !->
+  $ '.article .sklik-box' .parent! .hide!
+  $ '.sklik-box' .hide!
 
 executeRunners = !~>
   prioritySort = (x, y) -> (x.1.priority ? 0) - (y.1.priority ? 0)

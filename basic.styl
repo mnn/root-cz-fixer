@@ -4,6 +4,7 @@ tileBgColor = lighten(#100005, 2)
 commentsColor = #aaa
 
 richTextColor = #E9E6F8
+richTextColorHover = darken(richTextColor, 10)
 textColor = #F9F7E0
 textColorDark = desaturate(darken(textColor, 33), 70%)
 blandTextColor = desaturate(darken(textColorDark, 15), 15)
@@ -40,6 +41,13 @@ inline-flex-center()
     justify-content center
     align-items center
 
+input-recolor()
+        background-color richBgColor
+        color richTextColor
+        border-color richBorderColorHover
+        &:focus, &:active
+            border-color lightRichBgColor
+
 /* Fonts */
 
 .rcf-tag-fonts
@@ -56,7 +64,7 @@ inline-flex-center()
 .rcf-tag-color
     .main, .page-block
         border-color mainBgColor
-
+        margin-bottom 0
 
     body,
     .row,
@@ -74,6 +82,8 @@ inline-flex-center()
     .serial__pagination
     .serial__pagination a
     .opener
+    .detail__bottom, .detail__info-bar
+    .impressum__rubrics
         background-color tileBgColor
 
 .detail__perex .perex
@@ -82,7 +92,7 @@ inline-flex-center()
           
 .rcf-tag-color
     .section::before 
-        border-color mainBgColor
+        border-color richBgColor
 
     .article:not(:first-child) .article__heading--sidebar
     .content__more
@@ -138,9 +148,12 @@ inline-flex-center()
     .impressum
     .impressum__date
     .author__name a
+    .impressum__rubrics
+    .perex__date
         color textColorDark
         
     .impressum__date svg
+    .perex__date svg
         fill textColorDark
 
 .rcf-tag-color
@@ -163,9 +176,58 @@ inline-flex-center()
     .opinion-view
         background-color darken(tileBgColor, 1)
         border-color lighten(tileBgColor, 7)
+        margin-bottom 1em
         
-    .opinion-text h3.title a
-        color richTextColor
+    .opinion-text
+        padding-right 0.5em
+        padding-bottom 0.7em
+
+        h3.title a
+            color richTextColor
+        
+    .opinion-summary a
+    .opinions-add
+        button-recolor()
+
+    .opinion-odpovedet
+        button-recolor()
+        box-shadow 0 2px 0 veryLightRichBgColor
+        
+    .opinionButtons:hover .button
+        background 0
+        
+    .opinionButtons .button:hover
+        color richTextColorHover
+
+    .msg.info, ul.messages li.info
+        border-color richBorderColor
+        background-color richBgColor
+        color textColor
+    
+.rcf-tag-color
+    #addComment
+        background-color tileBgColor
+        
+        .button
+            button-recolor()
+            
+        .loginNotice
+            background-color tileBgColor
+            border 1px solid richBorderColor
+            a
+                border 0
+                button-recolor()
+                box-shadow none
+                border-radius 0
+
+        td
+            input.text
+            textarea
+                input-recolor()
+                
+    input.text:focus, input[type="number"]:focus, input[type="text"]:focus, textarea:focus
+        box-shadow none
+
     
 /* Tiles */
 
@@ -175,14 +237,15 @@ inline-flex-center()
         &:hover, &:active
             box-shadow 0px 0px 1px 1px alpha(lighten(tileBgColor, 20), 0.5)
 
-.article
-    margin-top 5px
+    .article
+        margin-top 5px
 
-.article--actuality, .article--content, .article--related, .article--search-result, .article--training
-    //padding 0px 4px
+    .article.article--content
+        min-height 163px
 
-.article.article--content
-    min-height 163px
+    .box-articles .row .article:first-child
+        margin-top 5px
+        
 
 
 // TODO: tag sensitive
@@ -267,6 +330,19 @@ tile-padding()
 .rcf-tag-color
     .detail__article::before
         border-top 0
+        
+    .promotips__item:not(:last-of-type) .promotips__heading
+        border-color richBorderColor
+    
+    .link__text
+        color textColor
+        
+    .promotips__item:hover
+        background-color richBgColor
+
+.rcf-tag-floating-article-info
+    #articleInfo.fixed
+        display none
 
 /* Forum (main page) */
 .rcf-tag-color
@@ -291,6 +367,19 @@ tile-padding()
 
     .article--sidebar
         margin-top 0
+        
+    // page
+        
+    .pagination
+        color textColor
+        .active, .number
+        .next, .last, .previous, .first
+            color textColor
+            background-color richBgColor
+            &:hover,&:focus,&:active
+                background-color richBgColorHover
+        .inactive
+            color textColorDark
 
 /* Navbar */
 .rcf-tag-color
@@ -365,12 +454,33 @@ tile-padding()
 
     .poster
         margin-bottom tileSpace
+        opVal = 0.5
+
         h4
             font-size 120%
+
         li.avatar
             padding 1em 0 0.1em 0
+            img
+                border 1px solid textColor
+                background-color textColor
+            
         & > ul > li:last-child:not(.profile)
             padding-bottom 1em
+
+        li.stars
+            img
+                opacity opVal
+                
+        li.postcount
+            color alpha(textColor, opVal)
+            img
+                opacity opVal
+                
+        li.profile ul li
+            opacity opVal
+            
+
 
     lineSeparatorBorder = 2px solid richBgColor
     .post
@@ -443,11 +553,16 @@ tile-padding()
     textarea
     input
     select
+        input-recolor()
+
+    hr
         background-color richBgColor
-        color richTextColor
-        border-color richBorderColorHover
-        &:focus, &:active
-            border-color lightRichBgColor
+
+    fieldset
+        border 1px solid richBorderColor
+        legend
+            border 0
+            color textColor
 
     .richedit_resize
         border 0
@@ -491,6 +606,9 @@ tile-padding()
             &.topslice, &.botslice
                 &, span
                     background-color tileBgColor
+
+    .lockedbg
+        background-color darkTileBgColor !important // <- b/c of !imp in original :/
 
     .table-striped > tbody > tr:nth-child(2n+1)
         & > td, & > th
@@ -541,7 +659,7 @@ tile-padding()
             button-recolor()
         strong
             rich-element-recolor()
-            background-color richBgColorHover
+            background-color lightRichBgColor
         roundness = 0.5em
         .navPages:first-child
             border-radius: roundness 0 0 roundness
