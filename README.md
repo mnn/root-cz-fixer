@@ -11,6 +11,7 @@ Priority of this project is the desktop version, but I do try to not break mobil
 
 > **Warning**: This is work in progress, not everything is finished.
 
+
 ## Build
 
 *TODO*: Description and better way of deployment.
@@ -20,6 +21,16 @@ npm install
 gulp build
 ```
 Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directory with GM script (e.g. `your_firefox_profile/gm_scripts/root-cz-fixer/`).
+
+
+## TODO
+
+* -mascot-
+* write build description in readme
+* better installation process - inline css into compile JS file?
+* concatenating comments into article page
+* force auto-load of all images on main page
+
 
 ## Showcase
 
