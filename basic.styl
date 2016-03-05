@@ -541,11 +541,16 @@ tile-padding()
 .rcf-tag-color
     div.cat_bar
     h4.catbg, h4.catbg2, h3.catbg, h3.catbg2, .table_list tbody.header td.catbg
+    div.roundframe div.cat_bar, div.roundframe div.cat_bar h3.catbg
         background-color richBgColor
 
     .upperframe, .roundframe, .lowerframe
         &, span
             background-color tileBgColor
+
+    div.title_barIC
+        &, .titlebg, .titlebg span
+            background-color richBgColor
 
     .btn-primary
         button-recolor()
@@ -645,6 +650,16 @@ tile-padding()
     .description, .description_board, .plainbox
         background-color tileBgColor        
 
+    .dropmenu li a.active
+    .dropmenu li li a:hover, .dropmenu li li:hover > a
+        background-color richBgColor
+
+    .dropmenu li
+        color textColor
+
+    .dropmenu li a.firstlevel:hover, .dropmenu li:hover a.firstlevel
+        color richTextColorHover
+
 .rcf-tag-page-links
     .pagelinks
         margin-top 0
@@ -700,5 +715,5 @@ tile-padding()
         position absolute
         right 1em
         opacity 0.5
-        z-index 100
+        z-index 10000 // to beat forum navbar
         pointer-events none
