@@ -87,6 +87,12 @@ config =
     addMascot:
       enabled: true
 
+    favicon:
+      enabled: true
+
+    forceLoadPictures:
+      enabled: true
+
 /* END of User configuration part */
 
 log = !->
@@ -172,6 +178,15 @@ removeSklikAd = !->
 addMascot = !->
   enableCssTag \mascot
   $ '<div>' .addClass \rcf-mascot .prependTo $ \body
+
+favicon = !->
+  data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEUiIiLvTCMCLODFAAAAEElEQVR4AWMY5oARCRAjAAAEpgAlLvy9awAAAABJRU5ErkJggg=='
+  $ "link[rel*='icon'" .attr(\href, data)
+
+forceLoadPictures = !->
+  $ 'img.image-lazyloadxt' .each !->
+    e = $(@)
+    e.attr(\src, e.attr(\data-src))
 
 # END of runners
 
