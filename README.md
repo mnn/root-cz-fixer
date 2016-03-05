@@ -37,7 +37,7 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
 ## Showcase
 
 ### Main page
-![](http://i.imgur.com/JLFQv1v.png)
+![](http://i.imgur.com/gq4E76R.png)
 
 ### Forum
-![](http://i.imgur.com/ktf7dqP.png)
+![](http://i.imgur.com/6hJWNV6.png)

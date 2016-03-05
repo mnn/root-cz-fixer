@@ -185,8 +185,7 @@ favicon = !->
 
 forceLoadPictures = !->
   $ 'img.image-lazyloadxt' .each !->
-    e = $(@)
-    e.attr(\src, e.attr(\data-src))
+    $ @ |> !-> it.attr \src, it.attr \data-src
 
 # END of runners
 
