@@ -27,7 +27,8 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
 
 * [x] main page
 * [ ] write build description in readme
-* [ ] better installation process - inline css into compile JS file?
+* [ ] better installation process - inline css into compiled JS file?
+* [ ] distribute just a loader (automatic updates)?
 * [x] forum
 * [x] mascot
 * [x] force auto-load of all images on main page
@@ -35,6 +36,9 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
 * [ ] concatenating comments into article page
 
 ## Showcase
+
+### Icon
+![](http://i.imgur.com/pDdhNKz.png)
 
 ### Main page
 ![](http://i.imgur.com/gq4E76R.png)
