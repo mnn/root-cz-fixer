@@ -93,6 +93,14 @@ config =
     forceLoadPictures:
       enabled: true
 
+    hidePrArticles:
+      enabled: true
+      options:
+        fully: false # don't just lower opacity but wipe them entirely
+
+    hideZdrojak:
+      enabled: true
+
 /* END of User configuration part */
 
 log = !->
@@ -186,6 +194,14 @@ favicon = !->
 forceLoadPictures = !->
   $ 'img.image-lazyloadxt' .each !->
     $ @ |> !-> it.attr \src, it.attr \data-src
+
+hidePrArticles = (opts) !->
+  art = $ '.article__marker:contains("Komerční sdělení")' .closest \.article
+  if opts.fully then art.hide!
+  else art.addClass \rcf-pr-marker
+
+hideZdrojak = !->
+  $ 'a.article__img[href*="//www.zdrojak.cz"]' .closest \.article .hide!
 
 # END of runners
 

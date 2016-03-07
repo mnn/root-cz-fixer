@@ -660,6 +660,27 @@ tile-padding()
     .dropmenu li a.firstlevel:hover, .dropmenu li:hover a.firstlevel
         color richTextColorHover
 
+/* Blog */
+
+.rcf-tag-color
+    .blog__label
+    .tag__link
+        button-recolor()
+        border none
+
+    .tag__link
+        font-size 90%
+        
+    .blog__heading
+        margin 0.2em 0
+        
+    .blog__article
+        border-bottom 2px solid richBgColor
+        
+    .opinion-view .opinion-info .new
+        rich-element-recolor()
+
+
 .rcf-tag-page-links
     .pagelinks
         margin-top 0
@@ -717,3 +738,18 @@ tile-padding()
         opacity 0.5
         z-index 10000 // to beat forum navbar
         pointer-events none
+
+.rcf-pr-marker
+    opacity 0.2
+    .article__marker
+        right 0
+        left auto
+        bottom 0
+        top auto
+    &:hover
+        opacity 1
+        .article__body
+            .article__text
+                opacity 1
+            .article__img
+                opacity 0.5

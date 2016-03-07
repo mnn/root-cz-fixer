@@ -25,15 +25,26 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
 
 ## TODO
 
-* [x] main page
-* [ ] write build description in readme
-* [ ] better installation process - inline css into compiled JS file?
-* [ ] distribute just a loader (automatic updates)?
-* [x] forum
-* [x] mascot
-* [x] force auto-load of all images on main page
-* [x] icon
-* [ ] concatenating comments into article page
+* change of colours, fonts and layout
+** [x] main page
+** [x] forum
+** [x] blog
+* new features
+** [x] mascot
+** [ ] concatenating all comments into article page
+* tweaks
+** [x] icon
+** [x] force auto-load of all images on main page
+* content filtering
+** [x] marking/hiding PR articles
+** [x] hiding of zdrojak.cz articles
+
+* support
+** [ ] write build description in readme
+* tools
+** [ ] better installation process - inline css into compiled JS file?
+** [ ] distribute just a loader (automatic updates)?
+
 
 ## Showcase
 
