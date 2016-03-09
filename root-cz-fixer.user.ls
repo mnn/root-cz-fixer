@@ -1,7 +1,7 @@
 ``// ==UserScript==
 // @name        root-cz-fixer
 // @namespace   monnef.tk
-// @include     http://*.root.cz/*
+// @match       *://*.root.cz/*
 // @version     %%VERSION%%
 // @grant       GM_addStyle
 // @grant       GM_getResourceText
