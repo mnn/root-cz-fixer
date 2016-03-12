@@ -20,7 +20,7 @@ Priority of this project is the desktop version, but I do try to not break mobil
 npm install
 gulp build
 ```
-Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directory with GM script (e.g. `your_firefox_profile/gm_scripts/root-cz-fixer/`).
+Install `root-cz-fixer.user.js` via GreaseMonkey (or similar browser addon).
 
 
 ## TODO
