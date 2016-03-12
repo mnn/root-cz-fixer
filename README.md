@@ -49,7 +49,7 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
  * [ ] write build description in readme
 
 * tools
- * [ ] better installation process - inline css into compiled JS file?
+ * [x] better installation process - inline css and libraries into compiled JS file
  * [ ] distribute just a loader (automatic updates)?
 
 
