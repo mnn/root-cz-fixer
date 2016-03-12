@@ -2,7 +2,6 @@ require! {
   gulp
   fs
   del
-  lodash: _
   'js-string-escape'
 }
 $ = (require \gulp-load-plugins)!
@@ -23,9 +22,9 @@ gulp.task \default, [\help]
 gulp.task \help, $.taskListing
 
 scriptFiles = [\root-cz-fixer.user.ls]
-jsFiles = _.map scriptFiles, -> it.replace(/\.ls$/, \.js)
+jsFiles = scriptFiles |> map -> it.replace(/\.ls$/, \.js)
 styleFiles = [\basic.styl]
-cssFiles = _.map styleFiles, -> it.replace(/\.styl$/, \.css)
+cssFiles = styleFiles |> map -> it.replace(/\.styl$/, \.css) 
 toCleanFiles = [jsFiles, cssFiles] |> flatten
 preludeLs = \prelude-browser-min.js
 
