@@ -37,6 +37,7 @@ Install `root-cz-fixer.user.js` via GreaseMonkey and copy `basic.css` to directo
 * tweaks
  * [x] icon
  * [x] force auto-load of all images on main page
+ * [x] compact forum topics list on main page
 
 * content filtering
  * [x] marking/hiding PR articles
@@ -58,6 +59,9 @@ There is a high chance that these shots are not from current version, don't expe
 
 ### Icon
 ![](http://i.imgur.com/pDdhNKz.png)
+
+### Forum topics upgrade on main page
+![](http://i.imgur.com/haYcghA.png)
 
 ### Main page
 ![](http://i.imgur.com/gq4E76R.png)
