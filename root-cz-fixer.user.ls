@@ -3,17 +3,13 @@
 // @namespace   monnef.tk
 // @match       *://*.root.cz/*
 // @version     %%VERSION%%
-// @grant       GM_addStyle
+// @grant       none
 // @require     https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js
 // @resource    basicCss basic.css
 // ==/UserScript==
-
-// included directly b/c GreaseMonkey can't handle it when loading via @require
-
-%%LIB_PRELUDE_LS%%
 ``
 
-/* User configuration part */
+/* Start of user configuration part */
 
 config =
   runners:
@@ -92,14 +88,22 @@ config =
 
 /* END of User configuration part */
 
+``
+// included directly b/c GreaseMonkey can't handle it when loading via @require
+
+%%LIB_PRELUDE_LS%%
+
+var compiledCss = '%%COMPILED_CSS%%';
+``
+
 log = !->
   console.log '[root-cz-fixer] ' + it
 
 log '* root-cz-fixer %%VERSION%% by monnef *'
 
-compiledCss = '%%COMPILED_CSS%%'
+addStyle = (css) !-> $ '<style type="text/css"></style>' .html(css) .appendTo(\head)
 
-applyCss = !-> GM_addStyle compiledCss
+applyCss = !-> /*GM_*/addStyle compiledCss
 
 invadeMenu = !->
   labelText = 'root.cz Fixer by <b>monnef</b>'
