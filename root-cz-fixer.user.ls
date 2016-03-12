@@ -101,6 +101,11 @@ config =
     hideZdrojak:
       enabled: true
 
+    halveDiscussionTopics:
+      enabled: true
+      options:
+        delay: 50
+
 /* END of User configuration part */
 
 log = !->
@@ -200,8 +205,24 @@ hidePrArticles = (opts) !->
   if opts.fully then art.hide!
   else art.addClass \rcf-pr-marker
 
-hideZdrojak = !->
-  $ 'a.article__img[href*="//www.zdrojak.cz"]' .closest \.article .hide!
+hideZdrojak = !-> $ 'a.article__img[href*="//www.zdrojak.cz"]' .closest \.article .hide!
+
+halveDiscussionTopics = (opts) !->
+  enableCssTag \halve-discussion-topics
+  work = !->
+    cl = \discussion__topics
+    ul = $ "ul.#cl" .addClass \rcf-topics-first-half
+    ul .wrap($ '<div>' .addClass \rcf-topics)
+    newUl = $ '<ul>' .addClass cl .addClass \rcf-topics-second-half .insertAfter ul
+    ul .children! .slice(ul.children!.length/2) .appendTo newUl
+  work!
+  t = { modifying: false }
+  $ \#discussionBox .bind \DOMNodeRemoved, !->
+    if t.modifying then return
+    t.modifying = true
+    setTimeout _, opts.delay <| !->
+      work!
+      t.modifying = false
 
 # END of runners
 

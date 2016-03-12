@@ -169,6 +169,7 @@ input-recolor()
         display inline-block
         top -70px
         opacity 0.3
+        pointer-events none
 
 /* Comments (text) */
 
@@ -753,3 +754,42 @@ tile-padding()
                 opacity 1
             .article__img
                 opacity 0.5
+
+.rcf-tag-halve-discussion-topics
+    break-point = '(max-width: 940px)'
+
+    .discussion__date, .discussion__total
+        flex-basis 3em
+
+    .rcf-topics
+        display flex
+        width 100%
+
+        @media break-point
+            flex-direction column
+
+    .discussion__topics
+        width 50%
+        .discussion__topic
+            margin 0 -5px
+            padding 0.1em 5px
+
+        @media break-point
+            width 100%
+            .discussion__topic
+                margin 0 -25px
+                padding 0.125em 25px
+
+        &.rcf-topics-first-half
+            margin-top 0
+            @media break-point
+                margin-top 10px
+
+        &.rcf-topics-second-half
+            margin-top 0
+            padding-left 0
+            @media break-point
+                padding-left 10px
+    
+    .discussion__topics.rcf-topics-second-half + *
+        clear both
