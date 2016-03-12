@@ -1,8 +1,16 @@
-require! <[ gulp fs del ]>
+require! {
+  gulp
+  fs
+  del
+  lodash: _
+  'js-string-escape'
+}
 $ = (require \gulp-load-plugins)!
 {flatten, map} = require \prelude-ls
 
-parsePackage = -> JSON.parse(fs.readFileSync('./package.json'));
+readFile = (fileName) -> fs.readFileSync(fileName, 'utf8')
+readFileAndEscape = (fileName) -> readFile fileName |> jsStringEscape
+parsePackage = -> readFile \./package.json |> JSON.parse
 packageVersion = -> parsePackage!.version
 
 do ->
@@ -14,16 +22,20 @@ gulp.task \default, [\help]
 
 gulp.task \help, $.taskListing
 
-scriptFiles = [ \root-cz-fixer.user.ls ]
-styleFiles = [ \basic.styl ]
-toCleanFiles = [scriptFiles, styleFiles] |> flatten |> map ->
-  it.replace(/\.ls$/, \.js).replace(/\.styl$/, \.css)
+scriptFiles = [\root-cz-fixer.user.ls]
+jsFiles = _.map scriptFiles, -> it.replace(/\.ls$/, \.js)
+styleFiles = [\basic.styl]
+cssFiles = _.map styleFiles, -> it.replace(/\.styl$/, \.css)
+toCleanFiles = [jsFiles, cssFiles] |> flatten
+preludeLs = \prelude-browser-min.js
 
 production = false
 
-gulp.task \scripts, ->
+gulp.task \scripts, [\styles], ->
   gulp.src scriptFiles
     .pipe $.replace '%%VERSION%%', packageVersion!
+    .pipe $.replace '%%COMPILED_CSS%%', readFileAndEscape \basic.css
+    .pipe $.replace '%%LIB_PRELUDE_LS%%', readFile preludeLs
     .pipe $.if !production, $.sourcemaps.init!
     .pipe $.livescript {+bare}
     .pipe $.if !production, $.sourcemaps.write!
@@ -44,7 +56,7 @@ gulp.task \watch, [\scripts \styles], ->
 
 gulp.task \build, (cb) ->
   production := true
-  $.sequence \clean, [\scripts, \styles], cb
+  $.sequence \clean, \styles, \scripts, cb
 
 gulp.task \clean, ->
   del toCleanFiles
