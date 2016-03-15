@@ -51,7 +51,7 @@ gulp.task \styles, ->
 
 gulp.task \watch, [\scripts \styles], ->
   gulp.watch scriptFiles, [\scripts]
-  gulp.watch styleFiles, [\styles]
+  gulp.watch styleFiles, [\scripts]
 
 gulp.task \build, (cb) ->
   production := true

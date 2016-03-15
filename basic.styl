@@ -684,24 +684,38 @@ tile-padding()
 
 .rcf-tag-page-links
     .pagelinks
+        *
+            float none
         margin-top 0
         padding-top: 0.35em
-        .navPages, strong
+        .navPages, strong, span
             inline-flex-center()
             border-width 1px
             border-style solid
             width 2.5em
             height 2.5em
+            color textColor
         .navPages
             button-recolor()
-        strong
+        strong, span
             rich-element-recolor()
             background-color lightRichBgColor
-        roundness = 0.5em
-        .navPages:first-child
-            border-radius: roundness 0 0 roundness
-        .navPages:last-child
-            border-radius: 0 roundness roundness 0
+        span
+            width auto
+            height auto
+        .rcf-page-links-dots-expanded
+            background-color transparent
+            border none
+            display inline
+            float none
+            margin 0
+            padding 0
+        :not(.rcf-page-links-dots-expanded)
+            roundness = 0.5em
+            .navPages:first-child
+                border-radius: roundness 0 0 roundness
+            .navPages:last-child
+                border-radius: 0 roundness roundness 0
             
     .nextlinks
     .nextlinks_bottom

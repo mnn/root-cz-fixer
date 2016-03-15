@@ -168,6 +168,11 @@ fixPageLinks = !->
   $ \.nextlinks .appendTo($ \.display-info)
   $ \.nextlinks_bottom .prependTo ($ \.pagesection .1)
   $ '.display-info ul' .prependTo ($ \.display-info)
+  $ '.pagelinks span' .each !->
+    elem = $ @
+    elem .click !->
+      elem .addClass \rcf-page-links-dots-expanded
+      removeTextNodes elem
 
 removeTextNodes = (jqElem) !->
   jqElem.contents!.filter(-> @nodeType === 3).remove!
