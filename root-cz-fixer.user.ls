@@ -101,6 +101,8 @@ log = !->
 
 log '* root-cz-fixer %%VERSION%% by monnef *'
 
+@$ = @jQuery = jQuery.noConflict(true)
+
 addStyle = (css) !-> $ '<style type="text/css"></style>' .html(css) .appendTo(\head)
 
 applyCss = !-> /*GM_*/addStyle compiledCss
@@ -161,6 +163,7 @@ recolor = !->
     .attr(\style, '')
     .parent() .find '[alt="|"]'
     .addClass \rcf-bbcbox-divider
+  $ '.postarea .quote_button' .closest \.btn-group .css \z-index, 1
 
 fixPageLinks = !->
   enableCssTag \page-links
