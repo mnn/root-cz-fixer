@@ -16,8 +16,13 @@ config =
     fixTiles:
       enabled: true
 
-    reduceFontSizes:
+    changeFont:
       enabled: true
+      options:
+        size: \20px
+        # google font (part in "Standard" tab, from ? character to closest ' character):
+        gfont: 'family=Ubuntu&subset=latin,latin-ext' # don't forget to also set 'font' field
+        font: \Ubuntu
 
     recolor:
       enabled: true
@@ -144,18 +149,24 @@ removeJobs = !->
     else setTimeout tryIt, 500
   tryIt!
 
+enableCssTag = (cls) !-> $ \html .addClass "rcf-tag-#cls"
+
 removeTrainings = !-> $ \.page-block--trainings .hide!
 removePromo = !-> $ \.promo .hide!
 removeFooter = !-> $ \.footer .hide!
-
-enableCssTag = (cls) !-> $ \html .addClass "rcf-tag-#cls"
-
-reduceFontSizes = !-> enableCssTag \fonts
 removeIinfoBar = !-> enableCssTag \iinfobar
 moveActualities = !-> enableCssTag \actualities
 removeForumAds = !-> enableCssTag \forum-ads
 removeForumFooter = !-> enableCssTag \forum-footer
 removeFloatingArticleInfo = !-> enableCssTag \floating-article-info
+
+changeFont = (opts) !->
+  enableCssTag \fonts
+  e = $ '.rcf-tag-fonts body'
+  e .css(\font-size, opts.size)
+  if opts.gfont
+    $ \head .append "<link href='https://fonts.googleapis.com/css?#{opts.gfont}' rel='stylesheet' type='text/css'>"
+  e .css(\font-family, opts.font) if opts.font
 
 recolor = !->
   enableCssTag \color
