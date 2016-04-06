@@ -20,6 +20,7 @@ config =
       enabled: true
       options:
         size: \20px
+        forumSize: \16px
         # google font (part in "Standard" tab, from ? character to closest ' character):
         gfont: 'family=Ubuntu&subset=latin,latin-ext' # don't forget to also set 'font' field
         font: \Ubuntu
@@ -108,6 +109,9 @@ log '* root-cz-fixer %%VERSION%% by monnef *'
 
 @$ = @jQuery = jQuery.noConflict(true)
 
+pageInfo =
+  isForum: window.location.host.startsWith(\forum)
+
 addStyle = (css) !-> $ '<style type="text/css"></style>' .html(css) .appendTo(\head)
 
 applyCss = !-> /*GM_*/addStyle compiledCss
@@ -167,6 +171,7 @@ changeFont = (opts) !->
   if opts.gfont
     $ \head .append "<link href='https://fonts.googleapis.com/css?#{opts.gfont}' rel='stylesheet' type='text/css'>"
   e .css(\font-family, opts.font) if opts.font
+  e .css(\font-size, opts.forumSize) if pageInfo.isForum && opts.forumSize
 
 recolor = !->
   enableCssTag \color
