@@ -231,6 +231,40 @@ input-recolor()
     input.text:focus, input[type="number"]:focus, input[type="text"]:focus, textarea:focus
         box-shadow none
 
+.rcf-tag-color
+    .opinions-comment--new
+        background-color richBgColor
+        border-left-color richBgColorHover
+    .opinions-button--version-2
+    .opinions-button--version-3
+        button-recolor()
+        
+    // only partially hide comment controls
+    .opinions-comment:hover
+        .opinions-comment-actions__item--visible-on-hover
+            display inline-block
+            opacity 1
+    .opinions-comment
+        .opinions-comment-actions__item--visible-on-hover
+            display inline-block
+            animation none
+            opacity 0.1
+        
+    .opinions-comment-text
+        border-left  0.15em solid alpha(textColor, 0.1)
+        padding-left 0.3em
+        
+    .opinions-comment-icon--reply
+        fill richTextColor
+        
+    .opinions-comment__content
+        border-top-color richBgColorHover
+        
+    .opinions-comment-user-donor-type
+        opacity 0.1
+        &:hover
+            opacity 1
+
     
 /* Tiles */
 
