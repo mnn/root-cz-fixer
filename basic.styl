@@ -249,16 +249,18 @@ input-recolor()
             display inline-block
             animation none
             opacity 0.1
-        
+    
+    bottom-space-reduce-size = 1em
+
     .opinions-comment-text
-        margin 0.2em 0 -1em 0
+        margin 0.2em 0 -0.5em 0
         &:before
             content ''
             width 0.125em
             position absolute
             space = 0.33em
             top space
-            bottom space
+            bottom space + bottom-space-reduce-size
             margin-left -0.35em
             background-color alpha(textColor, 0.1)
             
@@ -267,6 +269,7 @@ input-recolor()
         
     .opinions-comment__content
         border-top-color richBgColorHover
+        margin-bottom - bottom-space-reduce-size
         
     .opinions-comment-user-donor-type
         opacity 0.1
@@ -276,6 +279,10 @@ input-recolor()
     .opinions-comment
         .opinions-button--reply
             opacity 0.1
+            .opinions-button__content
+                min-width auto
+                padding 0.2em 0.5em
+                margin-top 0.4em
         &:hover
             .opinions-button--reply
                 opacity 1

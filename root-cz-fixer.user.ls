@@ -180,6 +180,7 @@ recolor = !->
     .parent() .find '[alt="|"]'
     .addClass \rcf-bbcbox-divider
   $ '.postarea .quote_button' .closest \.btn-group .css \z-index, 1
+  $ '.opinions-comment-actions__item--date' .addClass \opinions-comment-actions__item--visible-on-hover
 
 fixPageLinks = !->
   enableCssTag \page-links
