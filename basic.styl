@@ -251,9 +251,17 @@ input-recolor()
             opacity 0.1
         
     .opinions-comment-text
-        border-left  0.15em solid alpha(textColor, 0.1)
-        padding-left 0.3em
-        
+        margin 0.2em 0 -1em 0
+        &:before
+            content ''
+            width 0.125em
+            position absolute
+            space = 0.33em
+            top space
+            bottom space
+            margin-left -0.35em
+            background-color alpha(textColor, 0.1)
+            
     .opinions-comment-icon--reply
         fill richTextColor
         
@@ -264,7 +272,13 @@ input-recolor()
         opacity 0.1
         &:hover
             opacity 1
-
+            
+    .opinions-comment
+        .opinions-button--reply
+            opacity 0.1
+        &:hover
+            .opinions-button--reply
+                opacity 1
     
 /* Tiles */
 
