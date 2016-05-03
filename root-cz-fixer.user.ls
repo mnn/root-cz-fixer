@@ -92,6 +92,9 @@ config =
       options:
         delay: 50
 
+    removeAdblockNagger:
+      enabled: true
+
 /* END of User configuration part */
 
 ``
@@ -163,6 +166,7 @@ moveActualities = !-> enableCssTag \actualities
 removeForumAds = !-> enableCssTag \forum-ads
 removeForumFooter = !-> enableCssTag \forum-footer
 removeFloatingArticleInfo = !-> enableCssTag \floating-article-info
+removeAdblockNagger = !-> enableCssTag \remove-adblock-nagger
 
 changeFont = (opts) !->
   enableCssTag \fonts
