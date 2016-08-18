@@ -1,29 +1,34 @@
-# Root.cz Fixer
+# :octocat: Root.cz Fixer
 
-## About
+## :suspect: About
 
-RCF is a user script used to "re-skin" the [root.cz](http://root.cz) site.
+RCF is a user script (written in [LiveScript](http://livescript.net)) used to "re-skin" the [root.cz](http://root.cz) site.
 It does recolouring (wine tiles on black background with light yellow text and light blue links) and also rearranges layout a bit (e.g. actualities to the right, forum higher). It also covers the forum (recolouring, fixed pagination and some other tweaks).
 
 Many features can be disabled, e.g. hiding ads or moving forum up. It is done in a settings section in top of the script file.
 
 Priority of this project is the desktop version, but I do try to not break mobile layout.
 
-> **Warning**: This is work in progress, not everything is finished.
+>  Almost everything is finished. It is stable enough - I am using it almost every day  :partly_sunny:.
 
 
-## Build
+## :steam_locomotive: Build
 
-*TODO*: Description and better way of deployment.
+You need to install [Node.js](https://nodejs.org/en/), at least at version 6.
+In order to invoke `gulp` command comfortably I also recommend installing gulp package globally - `npm i -g gulp`.
+
+Unpack download archive or clone reopsitory and inside run:
 
 ```
 npm install
 gulp build
 ```
-Install `root-cz-fixer.user.js` via GreaseMonkey (or similar browser addon).
+
+Compiled file is `root-cz-fixer.user.js`.
+Now you can install it via GreaseMonkey (or similar browser addon).
 
 
-## TODO
+## :notebook: TODO
 
 * change of colours, fonts and layout
  * [x] main page
@@ -46,14 +51,14 @@ Install `root-cz-fixer.user.js` via GreaseMonkey (or similar browser addon).
 ***
 
 * support
- * [ ] write build description in readme
+ * [x] write build description in readme
 
 * tools
  * [x] better installation process - inline css and libraries into compiled JS file
  * [ ] distribute just a loader (automatic updates)?
 
 
-## Showcase
+## :tada: Showcase
 
 There is a high chance that these shots are not from current version, don't expect 1:1 match.
 
