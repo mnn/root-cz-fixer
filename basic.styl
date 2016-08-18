@@ -413,10 +413,26 @@ tile-padding()
     .layout-article-content
         max-width unset
 
+    .component--opinions-module--top-opinion
+        .top-opinion__link
+            color richTextColor
+        .design-bubble__content
+            background-color richBgColor
+            box-shadow none
+        .design-bubble--comment
+            &::before, &::after
+                border-top-color richBgColor
+                border-left-color richBgColor
+        .top-opinion__donor
+            opacity: 0.1
+            &:hover
+                opacity: 1
+            
+
 .rcf-tag-floating-article-info
     #articleInfo.fixed
         display none
-
+        
 /* Forum (main page) */
 .rcf-tag-color
     .section__body
