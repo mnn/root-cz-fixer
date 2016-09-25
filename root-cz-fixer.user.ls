@@ -5,7 +5,6 @@
 // @version     %%VERSION%%
 // @grant       none
 // @require     https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js
-// @resource    basicCss basic.css
 // ==/UserScript==
 ``
 
