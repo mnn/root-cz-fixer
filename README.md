@@ -14,9 +14,16 @@ Priority of this project is the desktop version, but I do try to not break mobil
 >  Almost everything is finished. It is stable enough - I am using it virtually every day  :partly_sunny:.
 
 
+## Installation
+
+1. Head to [releases page](https://github.com/mnn/root-cz-fixer/releases/latest) and download a most recent release (file ending with `.user.js`).
+2. Install it to your browser (e.g. into Firefox via [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) add-on, into Chrome via [TamperMonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) extension).
+3. Refresh tabs with loaded pages from `root.cz`.
+
+
 ## Technical details
 
-Project is written in [LiveScript](http://livescript.net) and uses [Stylus](stylus-lang.com/) for cascade style sheets.
+Project is written in [LiveScript](http://livescript.net) and uses [Stylus](http://stylus-lang.com/) for cascade style sheets.
 For build scripts is used [Gulp](http://gulpjs.com/).
 
 
