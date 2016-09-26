@@ -135,7 +135,11 @@ invadeMenu = !->
 @scrollAfterMenuBar = (opts) !->
   <-! setTimeout _, opts.delayInMs
   menuBar = $ \#nav-main
-  [y, h] = [menuBar .offset! .top, menuBar .height!]
+  menuBarOffset = menuBar .offset!
+  unless menuBarOffset?
+    log 'Failed to get offset of menuBar, skipping'
+    return 
+  [y, h] = [menuBarOffset .top, menuBar .height!]
   t = y + h
   html = $ \html
   if html .scrollTop! < t
@@ -214,7 +218,7 @@ removeTextNodes = (jqElem) !->
 
 @favicon = !->
   data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEUiIiLvTCMCLODFAAAAEElEQVR4AWMY5oARCRAjAAAEpgAlLvy9awAAAABJRU5ErkJggg=='
-  $ "link[rel*='icon'" .attr(\href, data)
+  $ "link[rel*='icon']" .attr(\href, data)
 
 @forceLoadPictures = !->
   $ 'img.image-lazyloadxt' .each !->
