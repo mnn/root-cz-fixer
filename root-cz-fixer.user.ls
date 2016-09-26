@@ -6,6 +6,8 @@
 // @grant       none
 // @require     https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js
 // ==/UserScript==
+(function(){
+  function main(){
 ``
 
 /* Start of user configuration part */
@@ -130,7 +132,7 @@ invadeMenu = !->
 
 # START of runners
 
-scrollAfterMenuBar = (opts) !->
+@scrollAfterMenuBar = (opts) !->
   <-! setTimeout _, opts.delayInMs
   menuBar = $ \#nav-main
   [y, h] = [menuBar .offset! .top, menuBar .height!]
@@ -140,7 +142,7 @@ scrollAfterMenuBar = (opts) !->
     if opts.animate then $ 'html, body' .animate({ scrollTop: t }, opts.animate)
     else html .scrollTop t
 
-fixTiles = !->
+@fixTiles = !->
   $ '.page-block:not(.page-block--trainings)' .addClass \not-page-block--trainings
   $ '.not-page-block--trainings .article__body.tile' .each !->
     e = $ @
@@ -148,7 +150,7 @@ fixTiles = !->
     text .clone! .addClass \rcf-tile-stretcher .appendTo e
     text .addClass \rcf-tile-shower
 
-removeJobs = !->
+@removeJobs = !->
   tryIt = ->
     e = $ \#jobs 
     if e.length then e .hide! 
@@ -157,17 +159,17 @@ removeJobs = !->
 
 enableCssTag = (cls) !-> $ \html .addClass "rcf-tag-#cls"
 
-removeTrainings = !-> $ \.page-block--trainings .hide!
-removePromo = !-> $ \.promo .hide!
-removeFooter = !-> $ \.footer .hide!
-removeIinfoBar = !-> enableCssTag \iinfobar
-moveActualities = !-> enableCssTag \actualities
-removeForumAds = !-> enableCssTag \forum-ads
-removeForumFooter = !-> enableCssTag \forum-footer
-removeFloatingArticleInfo = !-> enableCssTag \floating-article-info
-removeAdblockNagger = !-> enableCssTag \remove-adblock-nagger
+@removeTrainings = !-> $ \.page-block--trainings .hide!
+@removePromo = !-> $ \.promo .hide!
+@removeFooter = !-> $ \.footer .hide!
+@removeIinfoBar = !-> enableCssTag \iinfobar
+@moveActualities = !-> enableCssTag \actualities
+@removeForumAds = !-> enableCssTag \forum-ads
+@removeForumFooter = !-> enableCssTag \forum-footer
+@removeFloatingArticleInfo = !-> enableCssTag \floating-article-info
+@removeAdblockNagger = !-> enableCssTag \remove-adblock-nagger
 
-changeFont = (opts) !->
+@changeFont = (opts) !->
   enableCssTag \fonts
   e = $ '.rcf-tag-fonts body'
   e .css(\font-size, opts.size)
@@ -176,7 +178,7 @@ changeFont = (opts) !->
   e .css(\font-family, opts.font) if opts.font
   e .css(\font-size, opts.forumSize) if pageInfo.isForum && opts.forumSize
 
-recolor = !->
+@recolor = !->
   enableCssTag \color
   $ '#bbcBox_message > div > img'
     .attr(\style, '')
@@ -185,7 +187,7 @@ recolor = !->
   $ '.postarea .quote_button' .closest \.btn-group .css \z-index, 1
   $ '.opinions-comment-actions__item--date' .addClass \opinions-comment-actions__item--visible-on-hover
 
-fixPageLinks = !->
+@fixPageLinks = !->
   enableCssTag \page-links
   removeTextNodes $ \.pagelinks
   $ \.nextlinks .appendTo($ \.display-info)
@@ -200,32 +202,32 @@ fixPageLinks = !->
 removeTextNodes = (jqElem) !->
   jqElem.contents!.filter(-> @nodeType === 3).remove!
 
-moveForumUp = !-> $ \.page-block--forum .css(\margin-bottom, \0). css(\margin-top, \7px) .insertAfter($ \#sidebar)
+@moveForumUp = !-> $ \.page-block--forum .css(\margin-bottom, \0). css(\margin-top, \7px) .insertAfter($ \#sidebar)
 
-removeSklikAd = !->
+@removeSklikAd = !->
   $ '.article .sklik-box' .parent! .hide!
   $ '.sklik-box' .hide!
 
-addMascot = !->
+@addMascot = !->
   enableCssTag \mascot
   $ '<div>' .addClass \rcf-mascot .prependTo $ \body
 
-favicon = !->
+@favicon = !->
   data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEUiIiLvTCMCLODFAAAAEElEQVR4AWMY5oARCRAjAAAEpgAlLvy9awAAAABJRU5ErkJggg=='
   $ "link[rel*='icon'" .attr(\href, data)
 
-forceLoadPictures = !->
+@forceLoadPictures = !->
   $ 'img.image-lazyloadxt' .each !->
     $ @ |> !-> it.attr \src, it.attr \data-src
 
-hidePrArticles = (opts) !->
+@hidePrArticles = (opts) !->
   art = $ '.article__marker:contains("Komerční sdělení")' .closest \.article
   if opts.fully then art.hide!
   else art.addClass \rcf-pr-marker
 
-hideZdrojak = !-> $ 'a.article__img[href*="//www.zdrojak.cz"]' .closest \.article .hide!
+@hideZdrojak = !-> $ 'a.article__img[href*="//www.zdrojak.cz"]' .closest \.article .hide!
 
-halveDiscussionTopics = (opts) !->
+@halveDiscussionTopics = (opts) !->
   enableCssTag \halve-discussion-topics
   work = !->
     cl = \discussion__topics
@@ -260,8 +262,15 @@ checkSanity = !~>
 checkSanity!
 {each, obj-to-pairs, sort-with, reverse} = require 'prelude-ls'
 
-<~! $
-applyCss!
-invadeMenu!
-executeRunners!
-log 'Done!'
+do
+  <~! $
+  applyCss!
+  invadeMenu!
+  executeRunners!
+  log 'Done!'
+
+``/*end*/
+  };
+  main.call({});
+})();
+``
