@@ -68,8 +68,8 @@ input-recolor()
         border-color mainBgColor
         margin-bottom 0
 
-    body,
-    .row,
+    body
+    .row
     .page
         background-color mainBgColor
 
@@ -86,6 +86,8 @@ input-recolor()
     .opener
     .detail__bottom, .detail__info-bar
     .impressum__rubrics
+    .layout-columns__item--main
+    .box-articles__content
         background-color tileBgColor
 
 .detail__perex .perex
@@ -108,6 +110,9 @@ input-recolor()
     .article--sidebar:hover
     .discussion__topic:hover
         background-color lighten(tileBgColor, 3)
+
+    .layout-main--footer.layout-main--without-sidebar.layout-main
+        border-color mainBgColor
    
 /* Color */
 
@@ -135,6 +140,9 @@ input-recolor()
         
     .comments__count--new
         color lighten(commentsColor, 10)
+        
+    .icon-profile-wrap // white top user profile icon
+        opacity 0.2
 
 .rcf-tag-color
     body
@@ -173,6 +181,10 @@ input-recolor()
         opacity 0.3
         pointer-events none
         
+    .tips__header
+        &::after, &::before
+            border-left-width 0
+
     .component--opinions-module--enter-opinions-link
         a
             button-recolor()
@@ -488,7 +500,7 @@ tile-padding()
     .navbar
         top 0
     body
-        padding-top 30px
+        padding-top 0
     .main
         border-top-width 10px
 
@@ -497,25 +509,29 @@ tile-padding()
     body > .container-fluid
         display flex
 
-    .page
+    .layout-main__content
         margin-left 0
         padding-left 0px
         margin-right 355px
         @media large
             margin-right: 305px
+        &::before, &::after
+            background none
 
     #sidebar
         left unset;
         right -360px
+        position absolute
+        border-left 5px solid mainBgColor
         @media large
             right -310px
             max-width 300px
-        
+
     .main.main--index
         //margin-left 0px
         background none
         //padding-right 300px
-            
+
     .ad-skyscraper-sticky-holder
         display none
 
