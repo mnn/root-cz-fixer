@@ -48,6 +48,12 @@ input-recolor()
         &:focus, &:active
             border-color lightRichBgColor
 
+rich-element-recolor2()
+    background-color richBgColor
+    border-color richBgColorHover
+    color textColor
+
+
 /* Fonts */
 
 .rcf-tag-fonts
@@ -114,6 +120,18 @@ input-recolor()
     .layout-main--footer.layout-main--without-sidebar.layout-main
         border-color mainBgColor
    
+    .urs
+        table
+            tbody, thead
+                td
+                    background-color richBgColor
+                th
+                    background-color richBgColorHover
+        pre
+            background-color richBgColor
+            border-color richBgColorHover
+            color textColor
+        
 /* Color */
 
 .rcf-tag-color
@@ -265,10 +283,12 @@ input-recolor()
     // only partially hide comment controls
     .opinions-comment:hover
         .opinions-comment-actions__item--visible-on-hover
+        .opinions-comment-actions__item
             display inline-block
             opacity 1
     .opinions-comment
         .opinions-comment-actions__item--visible-on-hover
+        .opinions-comment-actions__item
             display inline-block
             animation none
             opacity 0.1
@@ -286,6 +306,8 @@ input-recolor()
             bottom space + bottom-space-reduce-size
             margin-left -0.35em
             background-color alpha(textColor, 0.1)
+        pre
+            rich-element-recolor2()
             
     .opinions-comment-icon--reply
         fill richTextColor
@@ -440,6 +462,10 @@ tile-padding()
             &:hover
                 opacity: 1
             
+    .urs .rs-box, .urs .rs-tile, .urs .rs-tip-major, .urs .rs-tip-minor
+        color textColor
+        background-color richBgColorHover
+        border-color richBorderColorHover
 
 .rcf-tag-floating-article-info
     #articleInfo.fixed
@@ -513,10 +539,15 @@ tile-padding()
         margin-left 0
         padding-left 0px
         margin-right 355px
+        padding-right 0
         @media large
             margin-right: 305px
         &::before, &::after
             background none
+
+    .layout-main--has-sidebar--default
+        #sidebar
+            right 0
 
     #sidebar
         left unset;
