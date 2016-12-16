@@ -1,6 +1,6 @@
 {
   "name": "root-cz-fixer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "devDependencies": {
     "del": "^2.2.0",
