@@ -222,7 +222,9 @@ removeTextNodes = (jqElem) !->
 
 @forceLoadPictures = !->
   $ 'img.image-lazyloadxt' .each !->
-    $ @ |> !-> it.attr \src, it.attr \data-src
+    $ @ |> !->
+      it.attr \src, it.attr \data-src
+      it.removeClass \image-lazyloadxt
 
 @hidePrArticles = (opts) !->
   art = $ '.article__marker:contains("Komerční sdělení")' .closest \.article
