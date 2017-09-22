@@ -3,6 +3,7 @@ require! {
   fs
   del
   'js-string-escape'
+  pump
 }
 $ = (require \gulp-load-plugins)!
 {flatten, map} = require \prelude-ls
@@ -31,16 +32,20 @@ preludeLs = \prelude-browser-min.js
 production = false
 
 gulp.task \scripts, [\styles], ->
-  gulp.src scriptFiles
-    .pipe $.replace '%%VERSION%%', packageVersion!
-    .pipe $.replace '%%COMPILED_CSS%%', readFileAndEscape \basic.css
-    .pipe $.replace '%%LIB_PRELUDE_LS%%', readFile preludeLs
-    .pipe $.if !production, $.sourcemaps.init!
-    .pipe $.livescript {+bare}
-    .pipe $.if !production, $.sourcemaps.write!
-    .pipe $.if production, $.uglify {preserveComments: \license, mangle: {except: [\jQuery, \$]} }
-    .on 'error' -> throw it
-    .pipe gulp.dest \.
+  pump([
+    gulp.src scriptFiles
+    $.replace '%%VERSION%%', packageVersion!
+    $.replace '%%COMPILED_CSS%%', readFileAndEscape \basic.css
+    $.replace '%%LIB_PRELUDE_LS%%', readFile preludeLs
+    $.if !production, $.sourcemaps.init!
+    $.livescript {+bare}
+    $.if !production, $.sourcemaps.write!
+    $.if production, $.uglify { output: { comments: true }, mangle: { reserved: [\jQuery, \$] } }
+    gulp.dest \.
+    ],
+    (err) !-> console.error 'Error: ' + err if err
+  )
+
 
 gulp.task \styles, ->
   gulp.src styleFiles

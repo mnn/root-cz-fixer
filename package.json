@@ -17,7 +17,8 @@
     "gulp-util": "^3.0.8",
     "js-string-escape": "^1.0.1",
     "livescript": "^1.5.0",
-    "prelude-ls": "^1.1.2"
+    "prelude-ls": "^1.1.2",
+    "pump": "^1.0.2"
   },
   "dependencies": {},
   "author": "monnef"
